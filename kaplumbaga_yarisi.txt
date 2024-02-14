@@ -1,0 +1,36 @@
+import random
+from turtle import Turtle,Screen
+screen=Screen()
+screen.setup(height=500,width=500)
+user_bet=screen.textinput(title="kim kazanacak",prompt="Kaplumbağalardan hangisini seçiyorsunuz?")
+renk=["red","purple","yellow","blue","green"]
+y_ekseni=[-100,-50,0,50,100]
+all_turtles=[]
+is_race=False
+for i in range(0,5):
+    turtle=Turtle(shape="turtle")
+    turtle.penup()
+    turtle.color(renk[i])
+    turtle.goto(x=-230,y=y_ekseni[i])
+    all_turtles.append(turtle)
+if user_bet:
+    is_race=True
+while is_race:
+    for turtle in all_turtles:
+        if turtle.xcor()>230:
+            is_race = False
+            winning_color=turtle.pencolor()
+            if user_bet==winning_color:
+                print("Tebrikler kazandınız.Yarışı kazanan {}".format(winning_color))
+            else:
+                print("Kaybettiniz.Yarışı kazanan {}".format(winning_color))
+
+
+
+        sayi=random.randint(0,10)
+        turtle.forward(sayi)
+
+
+
+screen.exitonclick()
+
